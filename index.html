@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محمد بسام - شرحاته نار 🔥</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF6B35;
+            --primary-dark: #E85A2A;
+            --secondary: #FFB830;
+            --accent: #FF3864;
+            --bg-dark: #0F1419;
+            --bg-card: #1A1F29;
+            --bg-hover: #242B38;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A8B2C1;
+            --success: #00D9A5;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #0F1419 0%, #1A1F29 50%, #0F1419 100%);
+        }
+
+        .bg-gradient::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .bg-gradient::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 184, 48, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 15s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, -30px) scale(1.1); }
+        }
+
+        /* Header & Navigation */
+        header {
+            background: rgba(26, 31, 41, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            position: relative;
+            box-shadow: 0 0 30px rgba(255, 107, 53, 0.4);
+        }
+
+        .logo-icon::before {
+            content: '🔥';
+            position: absolute;
+            animation: flicker 2s ease-in-out infinite;
+        }
+
+        @keyframes flicker {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .logo-text span {
+            display: block;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-badge {
+            background: var(--bg-card);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            border: 1px solid var(--border);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logout-btn {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 700;
+            font-family: 'Cairo', sans-serif;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .logout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(255, 107, 53, 0.5);
+        }
+
+        /* Login Page */
+        .login-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .login-box {
+            background: rgba(26, 31, 41, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 3rem;
+            max-width: 450px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: slideUp 0.6s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .login-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: 0 0 40px rgba(255, 107, 53, 0.5);
+        }
+
+        .login-header h1 {
+            font-size: 2rem;
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .login-header p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: 'Cairo', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: 'Cairo', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+            margin-top: 1rem;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(255, 107, 53, 0.5);
+        }
+
+        .error-message {
+            background: rgba(255, 56, 100, 0.1);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            text-align: center;
+            display: none;
+        }
+
+        /* Main Content */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .welcome-section {
+            margin-bottom: 3rem;
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .welcome-section h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            font-family: 'Tajawal', sans-serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .welcome-section p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .subject-card {
+            background: rgba(26, 31, 41, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            animation: cardAppear 0.6s ease backwards;
+        }
+
+        .subject-card:nth-child(1) { animation-delay: 0.1s; }
+        .subject-card:nth-child(2) { animation-delay: 0.2s; }
+        .subject-card:nth-child(3) { animation-delay: 0.3s; }
+        .subject-card:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .subject-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .subject-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2);
+        }
+
+        .subject-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+        }
+
+        .subject-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .subject-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .video-count {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 107, 53, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Video Section */
+        .video-section {
+            display: none;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .back-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.8rem 1.5rem;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: 'Cairo', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: var(--bg-hover);
+            transform: translateX(5px);
+        }
+
+        .videos-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .video-item {
+            background: rgba(26, 31, 41, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: slideIn 0.5s ease backwards;
+        }
+
+        .video-item:nth-child(1) { animation-delay: 0.1s; }
+        .video-item:nth-child(2) { animation-delay: 0.2s; }
+        .video-item:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .video-item:hover {
+            transform: translateX(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.15);
+        }
+
+        .video-thumbnail {
+            width: 160px;
+            height: 90px;
+            background: var(--bg-dark);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-thumbnail::after {
+            content: '▶';
+            position: absolute;
+            color: white;
+            font-size: 2rem;
+            background: rgba(255, 107, 53, 0.9);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .video-item:hover .video-thumbnail::after {
+            transform: scale(1.1);
+            background: var(--primary);
+        }
+
+        .video-info {
+            flex: 1;
+        }
+
+        .video-info h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .video-info p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .video-duration {
+            background: rgba(255, 107, 53, 0.1);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Video Player Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            max-width: 1200px;
+            width: 100%;
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            animation: slideUp 0.4s ease;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(255, 56, 100, 0.2);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            background: var(--accent);
+            transform: rotate(90deg);
+        }
+
+        .video-player {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            border-radius: 12px;
+            margin-top: 3rem;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(26, 31, 41, 0.8);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--text-secondary);
+        }
+
+        .footer-fire {
+            font-size: 1.5rem;
+            display: inline-block;
+            animation: flicker 2s ease-in-out infinite;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .subjects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .video-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .video-thumbnail {
+                width: 100%;
+                height: 200px;
+            }
+
+            .logo-text {
+                font-size: 1.2rem;
+            }
+
+            .welcome-section h1 {
+                font-size: 2rem;
+            }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+
+    <!-- Login Page -->
+    <div id="loginPage" class="login-container">
+        <div class="login-box">
+            <div class="login-header">
+                <div class="login-logo">🔥</div>
+                <h1>محمد بسام</h1>
+                <p>شرحاته نار 🔥 - تسجيل الدخول</p>
+            </div>
+            
+            <div id="errorMessage" class="error-message">
+                اسم المستخدم أو كلمة المرور غير صحيحة
+            </div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>اسم المستخدم</label>
+                    <input type="text" id="username" required placeholder="أدخل اسم المستخدم">
+                </div>
+                
+                <div class="form-group">
+                    <label>كلمة المرور</label>
+                    <input type="password" id="password" required placeholder="أدخل كلمة المرور">
+                </div>
+
+                <button type="submit" class="login-btn">دخول 🚀</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="mainContent" class="hidden">
+        <header>
+            <div class="nav-container">
+                <div class="logo">
+                    <div class="logo-icon">🔥</div>
+                    <div class="logo-text">
+                        <span>محمد بسام</span>
+                        <small style="font-size: 0.7rem; color: var(--text-secondary);">شرحاته نار</small>
+                    </div>
+                </div>
+                <div class="user-info">
+                    <div class="user-badge">
+                        <span>👤</span>
+                        <span id="displayUsername"></span>
+                    </div>
+                    <button class="logout-btn" onclick="logout()">تسجيل الخروج</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-container">
+            <!-- Subjects Section -->
+            <div id="subjectsSection">
+                <div class="welcome-section">
+                    <h1>مرحباً بك في منصة محمد بسام 🔥</h1>
+                    <p>اختر المادة اللي تبي تذاكرها</p>
+                </div>
+
+                <div class="subjects-grid">
+                    <div class="subject-card" onclick="showVideos('biology')">
+                        <div class="subject-icon">🧬</div>
+                        <h3>الأحياء</h3>
+                        <p>شروحات واضحة ومبسطة لمادة الأحياء</p>
+                        <span class="video-count">📹 3 فيديوهات</span>
+                    </div>
+
+                    <div class="subject-card" onclick="alert('قريباً - الفيديوهات قيد التحضير! 🚀')">
+                        <div class="subject-icon">🧪</div>
+                        <h3>الكيمياء</h3>
+                        <p>شروحات ممتعة للتفاعلات والمعادلات</p>
+                        <span class="video-count">📹 قريباً</span>
+                    </div>
+
+                    <div class="subject-card" onclick="alert('قريباً - الفيديوهات قيد التحضير! 🚀')">
+                        <div class="subject-icon">⚛️</div>
+                        <h3>الفيزياء</h3>
+                        <p>فهم عميق لقوانين الطبيعة</p>
+                        <span class="video-count">📹 قريباً</span>
+                    </div>
+
+                    <div class="subject-card" onclick="alert('قريباً - الفيديوهات قيد التحضير! 🚀')">
+                        <div class="subject-icon">📐</div>
+                        <h3>الرياضيات</h3>
+                        <p>حل المسائل خطوة بخطوة</p>
+                        <span class="video-count">📹 قريباً</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Videos Section -->
+            <div id="videosSection" class="video-section">
+                <button class="back-btn" onclick="backToSubjects()">
+                    ← الرجوع للمواد
+                </button>
+
+                <div class="welcome-section">
+                    <h1 id="subjectTitle">الأحياء 🧬</h1>
+                    <p>اختر الفيديو اللي تبي تشوفه</p>
+                </div>
+
+                <div class="videos-list" id="videosList">
+                    <!-- Videos will be inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>محمد بسام - شرحاته نار <span class="footer-fire">🔥</span></p>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">© 2026 جميع الحقوق محفوظة</p>
+        </footer>
+    </div>
+
+    <!-- Video Player Modal -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeVideo()">✕</button>
+            <h2 id="modalVideoTitle" style="font-family: 'Tajawal', sans-serif; margin-bottom: 1rem;"></h2>
+            <div id="videoPlayerContainer"></div>
+        </div>
+    </div>
+
+    <script>
+        // Login credentials
+        const CREDENTIALS = {
+            username: 'AA10',
+            password: '123123'
+        };
+
+        // Videos data - فيديوهات الأحياء من قناة محمد بسام
+        const videosData = {
+            biology: [
+                {
+                    id: 1,
+                    title: 'اكتشاف الانتحاء الضوئي',
+                    description: 'شرح مفصل لظاهرة الانتحاء الضوئي في النباتات وكيفية اكتشافها',
+                    duration: 'فيديو تعليمي',
+                    url: 'https://youtu.be/Jhly9qXU2kc'
+                },
+                {
+                    id: 2,
+                    title: 'النباتات تستخدم مواد كيميائية وإشارات كهربائية',
+                    description: 'كيف تستخدم النباتات المواد الكيميائية والإشارات الكهربائية للبقاء على قيد الحياة',
+                    duration: 'فيديو تعليمي',
+                    url: 'https://youtu.be/1kEZqM8i_YI'
+                },
+                {
+                    id: 3,
+                    title: 'منبهات النباتات والاستجابة',
+                    description: 'دراسة شاملة لمنبهات النباتات وكيفية استجابتها للمؤثرات الخارجية',
+                    duration: 'فيديو تعليمي',
+                    url: 'https://youtu.be/hiDyWcc2JDw'
+                }
+            ]
+        };
+
+        // Login form handler
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (username === CREDENTIALS.username && password === CREDENTIALS.password) {
+                // Login successful
+                sessionStorage.setItem('isLoggedIn', 'true');
+                sessionStorage.setItem('username', username);
+                showMainContent();
+            } else {
+                // Login failed
+                document.getElementById('errorMessage').style.display = 'block';
+                setTimeout(() => {
+                    document.getElementById('errorMessage').style.display = 'none';
+                }, 3000);
+            }
+        });
+
+        // Check if user is already logged in
+        window.addEventListener('load', function() {
+            if (sessionStorage.getItem('isLoggedIn') === 'true') {
+                showMainContent();
+            }
+        });
+
+        function showMainContent() {
+            document.getElementById('loginPage').classList.add('hidden');
+            document.getElementById('mainContent').classList.remove('hidden');
+            document.getElementById('displayUsername').textContent = sessionStorage.getItem('username');
+        }
+
+        function logout() {
+            sessionStorage.clear();
+            document.getElementById('mainContent').classList.add('hidden');
+            document.getElementById('loginPage').classList.remove('hidden');
+            document.getElementById('loginForm').reset();
+        }
+
+        function showVideos(subject) {
+            document.getElementById('subjectsSection').style.display = 'none';
+            document.getElementById('videosSection').style.display = 'block';
+            
+            const videos = videosData[subject];
+            const videosList = document.getElementById('videosList');
+            videosList.innerHTML = '';
+            
+            videos.forEach(video => {
+                const videoItem = `
+                    <div class="video-item" onclick="playVideo(${video.id}, '${subject}')">
+                        <div class="video-thumbnail">🎬</div>
+                        <div class="video-info">
+                            <h4>${video.title}</h4>
+                            <p>${video.description}</p>
+                        </div>
+                        <span class="video-duration">⏱️ ${video.duration}</span>
+                    </div>
+                `;
+                videosList.innerHTML += videoItem;
+            });
+        }
+
+        function backToSubjects() {
+            document.getElementById('videosSection').style.display = 'none';
+            document.getElementById('subjectsSection').style.display = 'block';
+        }
+
+        function playVideo(videoId, subject) {
+            const video = videosData[subject].find(v => v.id === videoId);
+            
+            document.getElementById('modalVideoTitle').textContent = video.title;
+            
+            // Create video player (YouTube or direct video)
+            let playerHTML;
+            if (video.url.includes('youtube.com') || video.url.includes('youtu.be')) {
+                const videoIdMatch = video.url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/);
+                const videoCode = videoIdMatch ? videoIdMatch[1] : '';
+                playerHTML = `
+                    <iframe 
+                        class="video-player"
+                        src="https://www.youtube.com/embed/${videoCode}" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                `;
+            } else {
+                playerHTML = `
+                    <video class="video-player" controls>
+                        <source src="${video.url}" type="video/mp4">
+                        متصفحك لا يدعم تشغيل الفيديو.
+                    </video>
+                `;
+            }
+            
+            document.getElementById('videoPlayerContainer').innerHTML = playerHTML;
+            document.getElementById('videoModal').style.display = 'flex';
+        }
+
+        function closeVideo() {
+            document.getElementById('videoModal').style.display = 'none';
+            document.getElementById('videoPlayerContainer').innerHTML = '';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('videoModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeVideo();
+            }
+        });
+
+        // Close modal with ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeVideo();
+            }
+        });
+    </script>
+</body>
+</html>
