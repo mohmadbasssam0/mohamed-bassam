@@ -409,20 +409,26 @@
             margin-bottom: 1rem;
         }
 
-        .video-count {
+        .content-badges {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.3rem;
             background: rgba(255, 107, 53, 0.1);
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 0.8rem;
             border-radius: 50px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
             color: var(--primary);
         }
 
-        /* Video Section */
-        .video-section {
+        /* Content Section */
+        .content-section {
             display: none;
             animation: fadeIn 0.6s ease;
         }
@@ -448,6 +454,56 @@
             transform: translateX(5px);
         }
 
+        .tabs-container {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--border);
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: 'Cairo', sans-serif;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 3px;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        /* Videos List */
         .videos-list {
             display: grid;
             gap: 1.5rem;
@@ -470,6 +526,9 @@
         .video-item:nth-child(1) { animation-delay: 0.1s; }
         .video-item:nth-child(2) { animation-delay: 0.2s; }
         .video-item:nth-child(3) { animation-delay: 0.3s; }
+        .video-item:nth-child(4) { animation-delay: 0.4s; }
+        .video-item:nth-child(5) { animation-delay: 0.5s; }
+        .video-item:nth-child(6) { animation-delay: 0.6s; }
 
         @keyframes slideIn {
             from {
@@ -538,13 +597,84 @@
             font-size: 0.9rem;
         }
 
-        .video-duration {
-            background: rgba(255, 107, 53, 0.1);
-            color: var(--primary);
+        /* Notes List */
+        .notes-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .note-card {
+            background: rgba(26, 31, 41, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            animation: cardAppear 0.5s ease backwards;
+        }
+
+        .note-card:nth-child(1) { animation-delay: 0.1s; }
+        .note-card:nth-child(2) { animation-delay: 0.2s; }
+        .note-card:nth-child(3) { animation-delay: 0.3s; }
+        .note-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .note-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary);
+            box-shadow: 0 10px 30px rgba(255, 184, 48, 0.15);
+        }
+
+        .note-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .note-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .note-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .note-type {
+            display: inline-block;
+            background: rgba(255, 184, 48, 0.1);
+            color: var(--secondary);
             padding: 0.3rem 0.8rem;
             border-radius: 50px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 600;
+        }
+
+        .locked-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(255, 56, 100, 0.2);
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
         }
 
         /* Video Player Modal */
@@ -604,6 +734,24 @@
             margin-top: 3rem;
         }
 
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-secondary);
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
         /* Footer */
         footer {
             background: rgba(26, 31, 41, 0.8);
@@ -646,6 +794,14 @@
 
             .welcome-section h1 {
                 font-size: 2rem;
+            }
+
+            .tabs-container {
+                overflow-x: auto;
+            }
+
+            .notes-list {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -716,50 +872,138 @@
                 </div>
 
                 <div class="subjects-grid">
-                    <div class="subject-card" onclick="showVideos('biology')">
+                    <div class="subject-card" onclick="showContent('biology')">
                         <div class="subject-icon">🧬</div>
                         <h3>الأحياء</h3>
                         <p>شروحات واضحة ومبسطة لمادة الأحياء</p>
-                        <span class="video-count">📹 3 فيديوهات</span>
+                        <div class="content-badges">
+                            <span class="badge">📹 15 فيديو</span>
+                            <span class="badge">📝 ملزمات</span>
+                        </div>
                     </div>
 
-                    <div class="subject-card" onclick="alert('قريباً - الفيديوهات قيد التحضير! 🚀')">
+                    <div class="subject-card" onclick="showContent('chemistry')">
                         <div class="subject-icon">🧪</div>
                         <h3>الكيمياء</h3>
                         <p>شروحات ممتعة للتفاعلات والمعادلات</p>
-                        <span class="video-count">📹 قريباً</span>
+                        <div class="content-badges">
+                            <span class="badge">📹 فيديوهات</span>
+                            <span class="badge">📝 ملزمات</span>
+                        </div>
                     </div>
 
-                    <div class="subject-card" onclick="alert('قريباً - الفيديوهات قيد التحضير! 🚀')">
+                    <div class="subject-card" onclick="showContent('physics')">
                         <div class="subject-icon">⚛️</div>
                         <h3>الفيزياء</h3>
                         <p>فهم عميق لقوانين الطبيعة</p>
-                        <span class="video-count">📹 قريباً</span>
+                        <div class="content-badges">
+                            <span class="badge">📹 فيديوهات</span>
+                            <span class="badge">📝 ملزمات</span>
+                        </div>
                     </div>
 
-                    <div class="subject-card" onclick="alert('قريباً - الفيديوهات قيد التحضير! 🚀')">
+                    <div class="subject-card" onclick="showContent('math')">
                         <div class="subject-icon">📐</div>
                         <h3>الرياضيات</h3>
                         <p>حل المسائل خطوة بخطوة</p>
-                        <span class="video-count">📹 قريباً</span>
+                        <div class="content-badges">
+                            <span class="badge">📹 فيديوهات</span>
+                            <span class="badge">📝 ملزمات</span>
+                        </div>
+                    </div>
+
+                    <div class="subject-card" onclick="showContent('arabic')">
+                        <div class="subject-icon">📚</div>
+                        <h3>اللغة العربية</h3>
+                        <p>إتقان اللغة العربية وقواعدها</p>
+                        <div class="content-badges">
+                            <span class="badge">📹 فيديوهات</span>
+                            <span class="badge">📝 ملزمات</span>
+                        </div>
+                    </div>
+
+                    <div class="subject-card" onclick="showContent('english')">
+                        <div class="subject-icon">🔤</div>
+                        <h3>اللغة الإنجليزية</h3>
+                        <p>تعلم الإنجليزية بطريقة سهلة</p>
+                        <div class="content-badges">
+                            <span class="badge">📹 فيديوهات</span>
+                            <span class="badge">📝 ملزمات</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Videos Section -->
-            <div id="videosSection" class="video-section">
+            <!-- Content Section -->
+            <div id="contentSection" class="content-section">
                 <button class="back-btn" onclick="backToSubjects()">
                     ← الرجوع للمواد
                 </button>
 
                 <div class="welcome-section">
-                    <h1 id="subjectTitle">الأحياء 🧬</h1>
-                    <p>اختر الفيديو اللي تبي تشوفه</p>
+                    <h1 id="contentTitle"></h1>
+                    <p>اختر بين الفيديوهات والملزمات</p>
                 </div>
 
-                <div class="videos-list" id="videosList">
-                    <!-- Videos will be inserted here -->
+                <div class="tabs-container">
+                    <button class="tab-btn active" onclick="switchTab('videos')">📹 الفيديوهات</button>
+                    <button class="tab-btn" onclick="switchTab('solved')">📝 ملزمات محلولة</button>
+                    <button class="tab-btn" onclick="switchTab('unsolved')">📄 ملزمات غير محلولة</button>
                 </div>
+
+                <div id="videosTab" class="tab-content active">
+                    <div class="videos-list" id="videosList"></div>
+                </div>
+
+                <div id="solvedTab" class="tab-content">
+                    <div class="notes-list" id="solvedNotesList"></div>
+                </div>
+
+                <div id="unsolvedTab" class="tab-content">
+                    <div class="notes-list" id="unsolvedNotesList"></div>
+                </div>
+            </div>
+
+            <!-- Units Section (for subjects with hierarchical structure) -->
+            <div id="unitsSection" class="content-section">
+                <button class="back-btn" onclick="backToSubjects()">
+                    ← الرجوع للمواد
+                </button>
+
+                <div class="welcome-section">
+                    <h1 id="unitsTitle"></h1>
+                    <p>اختر الوحدة</p>
+                </div>
+
+                <div class="subjects-grid" id="unitsList"></div>
+            </div>
+
+            <!-- Lessons Section -->
+            <div id="lessonsSection" class="content-section">
+                <button class="back-btn" onclick="backToUnits()">
+                    ← الرجوع للوحدات
+                </button>
+
+                <div class="welcome-section">
+                    <h1 id="lessonsTitle"></h1>
+                    <p>اختر الدرس</p>
+                </div>
+
+                <div class="subjects-grid" id="lessonsList"></div>
+            </div>
+
+            <!-- Lesson Videos Section -->
+            <div id="lessonVideosSection" class="content-section">
+                <button class="back-btn" onclick="backToLessons()">
+                    ← الرجوع للدروس
+                </button>
+
+                <div class="welcome-section">
+                    <h1 id="lessonVideosTitle"></h1>
+                    <p>اختر الفيديو</p>
+                </div>
+
+                <div class="videos-list" id="lessonVideosList"></div>
             </div>
         </div>
 
@@ -781,35 +1025,188 @@
     <script>
         // Login credentials
         const CREDENTIALS = {
-            username: 'AA10',
-            password: '123123'
+            username: 'عبدالكريم العوين',
+            password: '1231'
         };
 
-        // Videos data - فيديوهات الأحياء من قناة محمد بسام
-        const videosData = {
-            biology: [
-                {
-                    id: 1,
-                    title: 'اكتشاف الانتحاء الضوئي',
-                    description: 'شرح مفصل لظاهرة الانتحاء الضوئي في النباتات وكيفية اكتشافها',
-                    duration: 'فيديو تعليمي',
-                    url: 'https://youtu.be/Jhly9qXU2kc'
-                },
-                {
-                    id: 2,
-                    title: 'النباتات تستخدم مواد كيميائية وإشارات كهربائية',
-                    description: 'كيف تستخدم النباتات المواد الكيميائية والإشارات الكهربائية للبقاء على قيد الحياة',
-                    duration: 'فيديو تعليمي',
-                    url: 'https://youtu.be/1kEZqM8i_YI'
-                },
-                {
-                    id: 3,
-                    title: 'منبهات النباتات والاستجابة',
-                    description: 'دراسة شاملة لمنبهات النباتات وكيفية استجابتها للمؤثرات الخارجية',
-                    duration: 'فيديو تعليمي',
-                    url: 'https://youtu.be/hiDyWcc2JDw'
-                }
-            ]
+        // Current subject and navigation
+        let currentSubject = '';
+        let currentUnit = null;
+        let currentLesson = null;
+
+        // Content data for all subjects
+        const contentData = {
+            biology: {
+                name: 'الأحياء 🧬',
+                hasUnits: true,
+                units: [
+                    {
+                        id: 1,
+                        name: 'الوحدة الأولى',
+                        lessons: [
+                            {
+                                id: 1,
+                                name: 'الدرس الأول',
+                                videos: [
+                                    {
+                                        id: 1,
+                                        title: 'اكتشاف الانتحاء الضوئي',
+                                        description: 'شرح مفصل لظاهرة الانتحاء الضوئي في النباتات وكيفية اكتشافها',
+                                        url: 'https://youtu.be/Jhly9qXU2kc'
+                                    },
+                                    {
+                                        id: 2,
+                                        title: 'النباتات تستخدم مواد كيميائية وإشارات كهربائية',
+                                        description: 'كيف تستخدم النباتات المواد الكيميائية والإشارات الكهربائية للبقاء على قيد الحياة',
+                                        url: 'https://youtu.be/1kEZqM8i_YI'
+                                    },
+                                    {
+                                        id: 3,
+                                        title: 'منبهات النباتات والاستجابة',
+                                        description: 'دراسة شاملة لمنبهات النباتات وكيفية استجابتها للمؤثرات الخارجية',
+                                        url: 'https://youtu.be/hiDyWcc2JDw'
+                                    },
+                                    {
+                                        id: 4,
+                                        title: 'تحويل الإشارة - نموذج تواصل الخلايا النباتية',
+                                        description: 'شرح آلية تحويل الإشارات في الخلايا النباتية ونماذج التواصل الخلوي',
+                                        url: 'https://youtu.be/0AGiG3MYP0o'
+                                    },
+                                    {
+                                        id: 5,
+                                        title: 'مجموعات الهرمونات النباتية ووظائفها',
+                                        description: 'دراسة شاملة لأنواع الهرمونات النباتية المختلفة ودورها في نمو النبات',
+                                        url: 'https://youtu.be/g7GytidJblA'
+                                    },
+                                    {
+                                        id: 6,
+                                        title: 'إندول حمض الخليك IAA واستطالة الخلايا',
+                                        description: 'شرح تفصيلي لهرمون IAA ودوره في استطالة الخلايا النباتية',
+                                        url: 'https://youtu.be/PkyhQ2gP9-s'
+                                    },
+                                    {
+                                        id: 7,
+                                        title: 'حمض الأبسيسيك ABA',
+                                        description: 'شرح دور حمض الأبسيسيك في تنظيم نمو النبات والاستجابة للإجهاد',
+                                        url: 'https://youtu.be/qfKTgKkKRNQ'
+                                    },
+                                    {
+                                        id: 8,
+                                        title: 'السايتوكاينينات والنمو النشط',
+                                        description: 'دراسة هرمونات السايتوكاينينات ودورها في تحفيز انقسام الخلايا والنمو',
+                                        url: 'https://youtu.be/7iZIWTP63qQ'
+                                    },
+                                    {
+                                        id: 9,
+                                        title: 'الجيبريللينات',
+                                        description: 'شرح شامل لهرمونات الجيبريللينات وتأثيرها على نمو النبات',
+                                        url: 'https://youtu.be/x8RRlEUnIhA'
+                                    },
+                                    {
+                                        id: 10,
+                                        title: 'منظمات النمو الأخرى',
+                                        description: 'استعراض منظمات النمو النباتية الأخرى وأدوارها المختلفة',
+                                        url: 'https://youtu.be/lueFlzfClt8'
+                                    },
+                                    {
+                                        id: 11,
+                                        title: 'تطبيقات عملية للهرمونات النباتية',
+                                        description: 'الاستخدامات العملية للهرمونات النباتية في الزراعة والإنتاج',
+                                        url: 'https://youtu.be/TXuLnKBw2Lk'
+                                    }
+                                ]
+                            },
+                            {
+                                id: 2,
+                                name: 'الدرس الثاني',
+                                videos: [
+                                    {
+                                        id: 12,
+                                        title: 'أنواع الانتحاء',
+                                        description: 'دراسة الأنواع المختلفة من الانتحاء في النباتات',
+                                        url: 'https://youtu.be/Etds8puLOTc'
+                                    },
+                                    {
+                                        id: 13,
+                                        title: 'الانتحاء الأرضي',
+                                        description: 'شرح ظاهرة الانتحاء الأرضي واستجابة النبات للجاذبية',
+                                        url: 'https://youtu.be/BdtPcDTnRFs'
+                                    },
+                                    {
+                                        id: 14,
+                                        title: 'الانتحاء الضوئي',
+                                        description: 'تفصيل آلية الانتحاء الضوئي واستجابة النبات للضوء',
+                                        url: 'https://youtu.be/j51hjxLGdMM'
+                                    },
+                                    {
+                                        id: 15,
+                                        title: 'الانتحاء اللمسي',
+                                        description: 'شرح ظاهرة الانتحاء اللمسي واستجابة النبات للمس',
+                                        url: 'https://youtu.be/z5OMBvDYPYE'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                videos: [], // Empty for hierarchical structure
+                solvedNotes: [
+                    { id: 1, title: 'ملزمة محلولة', description: 'الملزمة الشاملة مع الحلول الكاملة', url: '' }
+                ],
+                unsolvedNotes: [
+                    { id: 1, title: 'ملزمة غير محلولة', description: 'الملزمة الشاملة للتدريب والمراجعة', url: '' }
+                ]
+            },
+            chemistry: {
+                name: 'الكيمياء 🧪',
+                videos: [],
+                solvedNotes: [
+                    { id: 1, title: 'ملزمة محلولة', description: 'الملزمة الشاملة مع الحلول الكاملة', url: '' }
+                ],
+                unsolvedNotes: [
+                    { id: 1, title: 'ملزمة غير محلولة', description: 'الملزمة الشاملة للتدريب والمراجعة', url: '' }
+                ]
+            },
+            physics: {
+                name: 'الفيزياء ⚛️',
+                videos: [],
+                solvedNotes: [
+                    { id: 1, title: 'ملزمة محلولة', description: 'الملزمة الشاملة مع الحلول الكاملة', url: '' }
+                ],
+                unsolvedNotes: [
+                    { id: 1, title: 'ملزمة غير محلولة', description: 'الملزمة الشاملة للتدريب والمراجعة', url: '' }
+                ]
+            },
+            math: {
+                name: 'الرياضيات 📐',
+                videos: [],
+                solvedNotes: [
+                    { id: 1, title: 'ملزمة محلولة', description: 'الملزمة الشاملة مع الحلول الكاملة', url: '' }
+                ],
+                unsolvedNotes: [
+                    { id: 1, title: 'ملزمة غير محلولة', description: 'الملزمة الشاملة للتدريب والمراجعة', url: '' }
+                ]
+            },
+            arabic: {
+                name: 'اللغة العربية 📚',
+                videos: [],
+                solvedNotes: [
+                    { id: 1, title: 'ملزمة محلولة', description: 'الملزمة الشاملة مع الحلول الكاملة', url: '' }
+                ],
+                unsolvedNotes: [
+                    { id: 1, title: 'ملزمة غير محلولة', description: 'الملزمة الشاملة للتدريب والمراجعة', url: '' }
+                ]
+            },
+            english: {
+                name: 'اللغة الإنجليزية 🔤',
+                videos: [],
+                solvedNotes: [
+                    { id: 1, title: 'ملزمة محلولة', description: 'الملزمة الشاملة مع الحلول الكاملة', url: '' }
+                ],
+                unsolvedNotes: [
+                    { id: 1, title: 'ملزمة غير محلولة', description: 'الملزمة الشاملة للتدريب والمراجعة', url: '' }
+                ]
+            }
         };
 
         // Login form handler
@@ -820,12 +1217,10 @@
             const password = document.getElementById('password').value;
             
             if (username === CREDENTIALS.username && password === CREDENTIALS.password) {
-                // Login successful
                 sessionStorage.setItem('isLoggedIn', 'true');
                 sessionStorage.setItem('username', username);
                 showMainContent();
             } else {
-                // Login failed
                 document.getElementById('errorMessage').style.display = 'block';
                 setTimeout(() => {
                     document.getElementById('errorMessage').style.display = 'none';
@@ -853,40 +1248,254 @@
             document.getElementById('loginForm').reset();
         }
 
-        function showVideos(subject) {
+        function showContent(subject) {
+            currentSubject = subject;
+            const data = contentData[subject];
+            
+            // Hide all sections first
             document.getElementById('subjectsSection').style.display = 'none';
-            document.getElementById('videosSection').style.display = 'block';
+            document.getElementById('contentSection').style.display = 'none';
+            document.getElementById('unitsSection').style.display = 'none';
+            document.getElementById('lessonsSection').style.display = 'none';
+            document.getElementById('lessonVideosSection').style.display = 'none';
             
-            const videos = videosData[subject];
-            const videosList = document.getElementById('videosList');
-            videosList.innerHTML = '';
+            // Check if subject has hierarchical structure (units)
+            if (data.hasUnits) {
+                showUnits(subject);
+            } else {
+                // Show regular content view
+                document.getElementById('contentSection').style.display = 'block';
+                document.getElementById('contentTitle').textContent = data.name;
+                
+                // Reset tabs
+                switchTab('videos');
+                
+                // Load videos
+                loadVideos(data.videos);
+                
+                // Load notes
+                loadNotes('solved', data.solvedNotes);
+                loadNotes('unsolved', data.unsolvedNotes);
+            }
+        }
+
+        function showUnits(subject) {
+            const data = contentData[subject];
+            document.getElementById('unitsSection').style.display = 'block';
+            document.getElementById('unitsTitle').textContent = data.name;
             
-            videos.forEach(video => {
-                const videoItem = `
-                    <div class="video-item" onclick="playVideo(${video.id}, '${subject}')">
-                        <div class="video-thumbnail">🎬</div>
-                        <div class="video-info">
-                            <h4>${video.title}</h4>
-                            <p>${video.description}</p>
-                        </div>
-                        <span class="video-duration">⏱️ ${video.duration}</span>
+            const unitsList = document.getElementById('unitsList');
+            unitsList.innerHTML = '';
+            
+            data.units.forEach(unit => {
+                const unitCard = document.createElement('div');
+                unitCard.className = 'subject-card';
+                unitCard.onclick = () => showLessons(unit.id);
+                
+                const lessonsCount = unit.lessons.length;
+                let videosCount = 0;
+                unit.lessons.forEach(lesson => {
+                    videosCount += lesson.videos.length;
+                });
+                
+                unitCard.innerHTML = `
+                    <div class="subject-icon">📚</div>
+                    <h3>${unit.name}</h3>
+                    <p>${lessonsCount} دروس - ${videosCount} فيديو</p>
+                    <div class="content-badges">
+                        <span class="badge">📖 ${lessonsCount} دروس</span>
+                        <span class="badge">📹 ${videosCount} فيديو</span>
                     </div>
                 `;
-                videosList.innerHTML += videoItem;
+                unitsList.appendChild(unitCard);
+            });
+            
+            // Also show notes section
+            const notesHTML = `
+                <div style="margin-top: 3rem; animation: fadeIn 0.6s ease;">
+                    <h2 style="margin-bottom: 1.5rem; font-family: 'Tajawal', sans-serif; font-size: 2rem;">📝 الملزمات</h2>
+                    <div class="notes-list" id="unitsNotesList"></div>
+                </div>
+            `;
+            unitsList.insertAdjacentHTML('afterend', notesHTML);
+            
+            // Load notes
+            const notesContainer = document.getElementById('unitsNotesList');
+            notesContainer.innerHTML = '';
+            
+            [data.solvedNotes[0], data.unsolvedNotes[0]].forEach((note, index) => {
+                const type = index === 0 ? 'solved' : 'unsolved';
+                const noteCard = document.createElement('div');
+                noteCard.className = 'note-card';
+                noteCard.onclick = () => openNote(note);
+                noteCard.innerHTML = `
+                    ${!note.url ? '<div class="locked-badge">🔒 محمي</div>' : ''}
+                    <div class="note-icon">📄</div>
+                    <h4>${note.title}</h4>
+                    <p>${note.description}</p>
+                    <span class="note-type">${type === 'solved' ? 'محلولة ✅' : 'غير محلولة 📝'}</span>
+                `;
+                notesContainer.appendChild(noteCard);
+            });
+        }
+
+        function showLessons(unitId) {
+            const data = contentData[currentSubject];
+            currentUnit = data.units.find(u => u.id === unitId);
+            
+            document.getElementById('unitsSection').style.display = 'none';
+            document.getElementById('lessonsSection').style.display = 'block';
+            document.getElementById('lessonsTitle').textContent = currentUnit.name;
+            
+            const lessonsList = document.getElementById('lessonsList');
+            lessonsList.innerHTML = '';
+            
+            currentUnit.lessons.forEach(lesson => {
+                const lessonCard = document.createElement('div');
+                lessonCard.className = 'subject-card';
+                lessonCard.onclick = () => showLessonVideos(lesson.id);
+                
+                lessonCard.innerHTML = `
+                    <div class="subject-icon">📖</div>
+                    <h3>${lesson.name}</h3>
+                    <p>${lesson.videos.length} فيديوهات تعليمية</p>
+                    <div class="content-badges">
+                        <span class="badge">📹 ${lesson.videos.length} فيديو</span>
+                    </div>
+                `;
+                lessonsList.appendChild(lessonCard);
+            });
+        }
+
+        function showLessonVideos(lessonId) {
+            currentLesson = currentUnit.lessons.find(l => l.id === lessonId);
+            
+            document.getElementById('lessonsSection').style.display = 'none';
+            document.getElementById('lessonVideosSection').style.display = 'block';
+            document.getElementById('lessonVideosTitle').textContent = currentLesson.name;
+            
+            const videosList = document.getElementById('lessonVideosList');
+            videosList.innerHTML = '';
+            
+            currentLesson.videos.forEach(video => {
+                const videoItem = document.createElement('div');
+                videoItem.className = 'video-item';
+                videoItem.onclick = () => playVideo(video);
+                videoItem.innerHTML = `
+                    <div class="video-thumbnail">🎬</div>
+                    <div class="video-info">
+                        <h4>${video.title}</h4>
+                        <p>${video.description}</p>
+                    </div>
+                `;
+                videosList.appendChild(videoItem);
             });
         }
 
         function backToSubjects() {
-            document.getElementById('videosSection').style.display = 'none';
+            document.getElementById('contentSection').style.display = 'none';
+            document.getElementById('unitsSection').style.display = 'none';
+            document.getElementById('lessonsSection').style.display = 'none';
+            document.getElementById('lessonVideosSection').style.display = 'none';
             document.getElementById('subjectsSection').style.display = 'block';
+            currentSubject = '';
+            currentUnit = null;
+            currentLesson = null;
         }
 
-        function playVideo(videoId, subject) {
-            const video = videosData[subject].find(v => v.id === videoId);
+        function backToUnits() {
+            document.getElementById('lessonsSection').style.display = 'none';
+            document.getElementById('unitsSection').style.display = 'block';
+            currentLesson = null;
+        }
+
+        function backToLessons() {
+            document.getElementById('lessonVideosSection').style.display = 'none';
+            document.getElementById('lessonsSection').style.display = 'block';
+        }
+
+        function switchTab(tabName) {
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
             
+            // Add active class to selected tab
+            if (tabName === 'videos') {
+                document.querySelectorAll('.tab-btn')[0].classList.add('active');
+                document.getElementById('videosTab').classList.add('active');
+            } else if (tabName === 'solved') {
+                document.querySelectorAll('.tab-btn')[1].classList.add('active');
+                document.getElementById('solvedTab').classList.add('active');
+            } else if (tabName === 'unsolved') {
+                document.querySelectorAll('.tab-btn')[2].classList.add('active');
+                document.getElementById('unsolvedTab').classList.add('active');
+            }
+        }
+
+        function loadVideos(videos) {
+            const container = document.getElementById('videosList');
+            
+            if (videos.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📹</div>
+                        <h3>لا توجد فيديوهات حالياً</h3>
+                        <p>الفيديوهات قيد التحضير - قريباً! 🚀</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = '';
+            videos.forEach(video => {
+                const videoItem = document.createElement('div');
+                videoItem.className = 'video-item';
+                videoItem.onclick = () => playVideo(video);
+                videoItem.innerHTML = `
+                    <div class="video-thumbnail">🎬</div>
+                    <div class="video-info">
+                        <h4>${video.title}</h4>
+                        <p>${video.description}</p>
+                    </div>
+                `;
+                container.appendChild(videoItem);
+            });
+        }
+
+        function loadNotes(type, notes) {
+            const containerId = type === 'solved' ? 'solvedNotesList' : 'unsolvedNotesList';
+            const container = document.getElementById(containerId);
+            
+            if (notes.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📝</div>
+                        <h3>لا توجد ملزمات حالياً</h3>
+                        <p>الملزمات قيد التحضير - قريباً! 🚀</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = '';
+            notes.forEach(note => {
+                const noteCard = document.createElement('div');
+                noteCard.className = 'note-card';
+                noteCard.onclick = () => openNote(note);
+                noteCard.innerHTML = `
+                    ${!note.url ? '<div class="locked-badge">🔒 محمي</div>' : ''}
+                    <div class="note-icon">📄</div>
+                    <h4>${note.title}</h4>
+                    <p>${note.description}</p>
+                    <span class="note-type">${type === 'solved' ? 'محلولة ✅' : 'غير محلولة 📝'}</span>
+                `;
+                container.appendChild(noteCard);
+            });
+        }
+
+        function playVideo(video) {
             document.getElementById('modalVideoTitle').textContent = video.title;
             
-            // Create video player (YouTube or direct video)
             let playerHTML;
             if (video.url.includes('youtube.com') || video.url.includes('youtu.be')) {
                 const videoIdMatch = video.url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/);
@@ -911,6 +1520,15 @@
             
             document.getElementById('videoPlayerContainer').innerHTML = playerHTML;
             document.getElementById('videoModal').style.display = 'flex';
+        }
+
+        function openNote(note) {
+            if (!note.url) {
+                alert('🔒 هذه الملزمة محمية\n\nللحصول على الرابط الخاص، يرجى التواصل مع محمد بسام.');
+                return;
+            }
+            
+            window.open(note.url, '_blank');
         }
 
         function closeVideo() {
